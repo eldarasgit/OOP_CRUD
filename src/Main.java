@@ -40,7 +40,7 @@ public class Main {
                     Plant.deletePlant();
                     break;
                 case 5:
-                    System.exit(1);
+                    System.exit(0);
                 default:
                     Plant.wrongChoise();
                     break;

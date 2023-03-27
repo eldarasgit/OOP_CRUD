@@ -82,7 +82,7 @@ public class Plant {
         return "Plant name: " + name + "\n" +
                 "Latin Name: " + latinName + "\n" +
                 "Continent: " + continent + "\n" +
-                "Height: " + height + "\n" +
+                "Height: " + height + " m." + "\n" +
                 annual + "\n" +
                 eatable + "\n";
     }
