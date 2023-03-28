@@ -18,6 +18,10 @@ public class Plant {
         this.id = idCount++;
     }
 
+    public Plant(int id) {
+        this.id = id;
+    }
+
     public Plant(String name, String latinName, boolean isAnnual,
                  String continent, int height, boolean isEatable) {
         this.id = ++idCount;
@@ -36,6 +40,7 @@ public class Plant {
     public String getName() {
         return this.name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -43,6 +48,7 @@ public class Plant {
     public String getLatinName() {
         return this.latinName;
     }
+
     public void setLatinName(String latinName) {
         this.latinName = latinName;
     }
@@ -50,6 +56,7 @@ public class Plant {
     public boolean getIsAnnual() {
         return this.isAnnual;
     }
+
     public void setIsAnnual(boolean isAnnual) {
         this.isAnnual = isAnnual;
     }
@@ -57,6 +64,7 @@ public class Plant {
     public String getContinent() {
         return this.continent;
     }
+
     public void setContinent(String continent) {
         this.continent = continent;
     }
@@ -64,6 +72,7 @@ public class Plant {
     public int getHeight() {
         return this.height;
     }
+
     public void setHeight(int height) {
         this.height = height;
     }
@@ -71,6 +80,7 @@ public class Plant {
     public boolean getIsEatable() {
         return this.isEatable;
     }
+
     public void setIsEatable(boolean isEatable) {
         this.isEatable = isEatable;
     }
@@ -79,7 +89,8 @@ public class Plant {
     public String toString() {
         String annual = isAnnual ? "Annual" : "Not annual";
         String eatable = isEatable ? "Eatable" : "Not eatable";
-        return "Plant name: " + name + "\n" +
+        return "-----" + (this.id) + "-----" + "\n" +
+                "Plant name: " + name + "\n" +
                 "Latin Name: " + latinName + "\n" +
                 "Continent: " + continent + "\n" +
                 "Height: " + height + " m." + "\n" +
@@ -101,30 +112,55 @@ public class Plant {
         }
     }
 
-    public static void addPlant() {
-        Plant plant = new Plant();
+    public static Plant createPlant(int id) {
+        Plant pl;
+        if (id == 0) {
+            pl = new Plant();
+        } else {
+            pl = new Plant(id);
+        }
         System.out.println("Iveskite augalo pavadinima: ");
-        plant.setName(sc.nextLine());
+        pl.setName(sc.nextLine());
         System.out.println("Iveskite lotyniska pavadinima: ");
-        plant.setLatinName(sc.nextLine());
+        pl.setLatinName(sc.nextLine());
         System.out.println("Iveskite augalo paplityma: ");
-        plant.setContinent(sc.nextLine());
+        pl.setContinent(sc.nextLine());
         System.out.println("Iveskita augalo auksti: ");
-        plant.setHeight(sc.nextInt());
+        pl.setHeight(sc.nextInt());
         System.out.println("Ar augalas vienmetis?: ");
-        plant.setIsAnnual(sc.nextBoolean());
+        pl.setIsAnnual(sc.nextBoolean());
         System.out.println("Ar augalas valgomas? ");
-        plant.setIsEatable(sc.nextBoolean());
+        pl.setIsEatable(sc.nextBoolean());
         sc.nextLine();
-        Plant.plantList.add(plant);
+        return pl;
     }
 
-    public static void updatePlant() {
-        System.out.println("Atsiprasome! Si funkcija neveikia. Pasirinkite kita varianta: ");
+    public static void addPlant() {
+        Plant.plantList.add(createPlant(0));
+    }
+
+    public static void editPlant() {
+        System.out.println("Iveskite redaguojamo augalo ID:");
+        int id = sc.nextInt();
+        sc.nextLine();
+        for (int i = 0; i < plantList.size(); i++) {
+            if (plantList.get(i).id == id) {
+                plantList.set(i, createPlant(id));
+                return;
+            }
+        }
     }
 
     public static void deletePlant() {
-        System.out.println("Atsiprasome! Si funkcija neveikia. Pasirinkite kita varianta: ");
+        System.out.println("Iveskite trinamo augalo ID: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+        for (int i = 0; i < plantList.size(); i++) {
+            if (plantList.get(i).id == id) {
+                plantList.remove(i);
+                return;
+            }
+        }
     }
 
     public static void wrongChoise() {

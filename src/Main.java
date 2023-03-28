@@ -34,7 +34,7 @@ public class Main {
                     Plant.addPlant();
                     break;
                 case 3:
-                    Plant.updatePlant();
+                    Plant.editPlant();
                     break;
                 case 4:
                     Plant.deletePlant();
