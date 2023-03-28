@@ -115,6 +115,7 @@ public class Plant {
         plant.setIsAnnual(sc.nextBoolean());
         System.out.println("Ar augalas valgomas? ");
         plant.setIsEatable(sc.nextBoolean());
+        sc.nextLine();
         Plant.plantList.add(plant);
     }
 

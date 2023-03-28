@@ -25,7 +25,7 @@ public class Main {
         while (true) {
             Plant.info();
             int input = sc.nextInt();
-            sc.nextLine();
+//            sc.nextLine();
             switch (input) {
                 case 1:
                     Plant.printPlants();
