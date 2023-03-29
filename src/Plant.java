@@ -127,9 +127,9 @@ public class Plant {
         pl.setContinent(sc.nextLine());
         System.out.println("Iveskita augalo auksti: ");
         pl.setHeight(sc.nextInt());
-        System.out.println("Ar augalas vienmetis?: ");
+        System.out.println("Ar augalas vienmetis true/false?: ");
         pl.setIsAnnual(sc.nextBoolean());
-        System.out.println("Ar augalas valgomas? ");
+        System.out.println("Ar augalas valgomas true/false? ");
         pl.setIsEatable(sc.nextBoolean());
         sc.nextLine();
         return pl;
