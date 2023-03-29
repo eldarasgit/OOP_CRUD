@@ -9,9 +9,9 @@ public class Plant {
     private final int id;
     private String name;
     private String latinName;
-    private boolean isAnnual;
     private String continent;
     private int height;
+    private boolean isAnnual;
     private boolean isEatable;
 
     public Plant() {
@@ -53,14 +53,6 @@ public class Plant {
         this.latinName = latinName;
     }
 
-    public boolean getIsAnnual() {
-        return this.isAnnual;
-    }
-
-    public void setIsAnnual(boolean isAnnual) {
-        this.isAnnual = isAnnual;
-    }
-
     public String getContinent() {
         return this.continent;
     }
@@ -75,6 +67,14 @@ public class Plant {
 
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    public boolean getIsAnnual() {
+        return this.isAnnual;
+    }
+
+    public void setIsAnnual(boolean isAnnual) {
+        this.isAnnual = isAnnual;
     }
 
     public boolean getIsEatable() {
@@ -100,10 +100,11 @@ public class Plant {
 
     public static void info() {
         System.out.println("1. Pamatyti augalu sarasa");
-        System.out.println("2. Prideti augala");
-        System.out.println("3. Redaguoti augala");
-        System.out.println("4. Istrinti augala");
-        System.out.println("5. Iseiti is saraso");
+        System.out.println("2. Filtruoti sarasa");
+        System.out.println("3. Prideti augala");
+        System.out.println("4. Redaguoti augala");
+        System.out.println("5. Istrinti augala");
+        System.out.println("6. Iseiti is saraso");
     }
 
     public static void printPlants() {
@@ -127,12 +128,107 @@ public class Plant {
         pl.setContinent(sc.nextLine());
         System.out.println("Iveskita augalo auksti: ");
         pl.setHeight(sc.nextInt());
-        System.out.println("Ar augalas vienmetis true/false?: ");
+        System.out.println("Ar augalas vienmetis? (true/false)");
         pl.setIsAnnual(sc.nextBoolean());
-        System.out.println("Ar augalas valgomas true/false? ");
+        System.out.println("Ar augalas valgomas? (true/false)");
         pl.setIsEatable(sc.nextBoolean());
         sc.nextLine();
         return pl;
+    }
+
+    public static void filterPlants() {
+        System.out.println("Pasirinkite lauka, pagal kuri norite filtruoti:");
+        System.out.println("1. Pagal pavadinima:");
+        System.out.println("2. Pagal lotyniska pavadinima:");
+        System.out.println("3. Pagal augalo paplityma:");
+        System.out.println("4. Pagal augalo auksti:");
+        System.out.println("5. Pagal vienmecius/daugiamecius:");
+        System.out.println("6. Pagal tinkamuma valgyti:");
+        int input = sc.nextInt();
+        sc.nextLine();
+        switch (input) {
+            case 1:
+                filterByName();
+                break;
+            case 2:
+                filterByLatinName();
+                break;
+            case 3:
+                filterByContinent();
+                break;
+            case 4:
+                filterByHeight();
+                break;
+            case 5:
+                filterByAnnual();
+                break;
+            case 6:
+                filterByEatable();
+                break;
+        }
+    }
+
+    public static void filterByName() {
+        System.out.println("Iveskite pavadinima arba pavadinimo dali:");
+        String input = sc.nextLine().toLowerCase();
+        for (int i = 0; i < plantList.size(); i++) {
+            if (plantList.get(i).name.toLowerCase().contains(input)) {
+                System.out.println(plantList.get(i));
+            }
+        }
+    }
+
+    public static void filterByLatinName() {
+        System.out.println("Iveskite lotyniska pavadinima arba pavadinimo dali:");
+        String input = sc.nextLine().toLowerCase();
+        for (int i = 0; i < plantList.size(); i++) {
+            if (plantList.get(i).latinName.toLowerCase().contains(input)) {
+                System.out.println(plantList.get(i));
+            }
+        }
+    }
+
+    public static void filterByContinent() {
+        System.out.println("Iveskite kontinento pavadinima arba pavadinimo dali:");
+        String input = sc.nextLine().toLowerCase();
+        for (int i = 0; i < plantList.size(); i++) {
+            if (plantList.get(i).continent.toLowerCase().contains(input)) {
+                System.out.println(plantList.get(i));
+            }
+        }
+    }
+
+    public static void filterByHeight() {
+        System.out.println("Iveskite augalo auksti:");
+        int input = sc.nextInt();
+        sc.nextLine();
+        for (int i = 0; i < plantList.size(); i++) {
+            if (plantList.get(i).height == input) {
+                System.out.println(plantList.get(i));
+            }
+        }
+    }
+
+    public static void filterByAnnual() {
+        System.out.println("Iveskite, ar augalas vienmetis (true/false):");
+        boolean input = sc.nextBoolean();
+        sc.nextLine();
+        for (int i = 0; i < plantList.size(); i++) {
+            if (plantList.get(i).isAnnual == input) {
+                System.out.println(plantList.get(i));
+            }
+        }
+    }
+
+   public static void filterByEatable() {
+        System.out.println("Iveskite, ar augalas valgomas? (true/false):");
+        boolean input = sc.nextBoolean();
+        sc.nextLine();
+        for (int i = 0; i < plantList.size(); i++) {
+            if (plantList.get(i).isEatable == input) {
+                System.out.println(plantList.get(i));
+            }
+        }
     }
 
     public static void addPlant() {

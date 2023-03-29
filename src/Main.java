@@ -25,21 +25,23 @@ public class Main {
         while (true) {
             Plant.info();
             int input = sc.nextInt();
-//            sc.nextLine();
             switch (input) {
                 case 1:
                     Plant.printPlants();
                     break;
                 case 2:
-                    Plant.addPlant();
+                    Plant.filterPlants();
                     break;
                 case 3:
-                    Plant.editPlant();
+                    Plant.addPlant();
                     break;
                 case 4:
-                    Plant.deletePlant();
+                    Plant.editPlant();
                     break;
                 case 5:
+                    Plant.deletePlant();
+                    break;
+                case 6:
                     System.exit(0);
                 default:
                     Plant.wrongChoise();
